@@ -1858,12 +1858,21 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
 
       var file = this._thumbnailQueue.shift();
 
-      return this.createThumbnail(file, this.options.thumbnailWidth, this.options.thumbnailHeight, this.options.thumbnailMethod, true, function (dataUrl) {
-        _this10.emit("thumbnail", file, dataUrl);
+      if (file.type.match(/video.*/)) {
+        
+        this.emit("thumbnail", file, "");
 
-        _this10._processingThumbnail = false;
-        return _this10._processThumbnailQueue();
-      });
+        this._processingThumbnail = false;
+        return this._processThumbnailQueue();
+      } else {
+
+        return this.createThumbnail(file, this.options.thumbnailWidth, this.options.thumbnailHeight, this.options.thumbnailMethod, true, function (dataUrl) {
+          _this10.emit("thumbnail", file, dataUrl);
+
+          _this10._processingThumbnail = false;
+          return _this10._processThumbnailQueue();
+        });
+      }
     } // Can be called by the user to remove a file
 
   }, {
