@@ -1849,13 +1849,13 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
     value: function _enqueueThumbnail(file) {
       var _this9 = this;
 
-      if (this.options.createImageThumbnails && file.type.match(/image.*/) && file.size <= this.options.maxThumbnailFilesize * 1024 * 1024) {
+      //if (this.options.createImageThumbnails && file.type.match(/image.*/) && file.size <= this.options.maxThumbnailFilesize * 1024 * 1024) {
         this._thumbnailQueue.push(file);
 
         return setTimeout(function () {
           return _this9._processThumbnailQueue();
         }, 0); // Deferring the call
-      }
+      //}
     }
   }, {
     key: "_processThumbnailQueue",
