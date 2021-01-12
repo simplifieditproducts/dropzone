@@ -1251,7 +1251,7 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
       });
 
       this.on("addedfile", function(file) {
-        var mark = file.previewElement.getElementsByClassName(".dz-error-mark");
+        var mark = file.previewElement.getElementsByClassName("dz-error-mark");
         if (mark.length > 0) {
           mark = mark[0];
           mark.addEventListener("click", function() {
