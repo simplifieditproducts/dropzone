@@ -1262,6 +1262,18 @@ var Dropzone = /*#__PURE__*/function (_Emitter) {
         }
       });
 
+      this.on("addedfile", function(file) {
+        var mark = file.previewElement.getElementsByClassName(".dz-error-mark");
+        if (mark.length > 0) {
+          mark = mark[0];
+          mark.addEventListener("click", function() {
+            if (getComputedStyle(mark).opacity === "1")
+              // visible
+              _this3.removeFile(file);
+          });
+        }
+      });
+      
       var containsFiles = function containsFiles(e) {
         if (e.dataTransfer.types) {
           // Because e.dataTransfer.types is an Object in
